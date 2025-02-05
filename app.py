@@ -20,31 +20,31 @@ with st.form('form to generate cover letter'):
 
     # Generate LLM response
     generate_cover_letter = st.form_submit_button("Generate!")
-    if generate_cover_letter:
-        # Prompts
-        pre_prompt = "You are a helpful assistant. You do not respond as 'User' or pretend to be 'User'. You only respond once as 'Assistant'."
-        # Create a prompt for LLM: Include user inputs, and job description in the prompt
-        prompt = f"The job description is: {prompt_input}\n"
-        prompt += f"The candidate's name to include on the cover letter: {user_name}\n"
-        prompt += f"The job title/role: {role}\n"
-        prompt += f"The hiring manager is: {manager}\n"
-        prompt += f"How I heard about the opportunity: {referral}\n."
-        prompt += "Generate a cover letter"
-        # Generate LLM response
-        with st.spinner("Generating response"):
-            
-            response = replicate.run(
-                'meta/llama-2-13b-chat',  # Llama 2 model
-                input={
-                    "prompt": f"{pre_prompt} {prompt} Assistant:",
-                    "temperature": temp,
-                }
-            )
-            # Extract and display the LLM-generated cover letter
-            generated_cover_letter = " ".join([item for item in response])
+if generate_cover_letter:
+    # Prompts
+    pre_prompt = "You are a helpful assistant. You do not respond as 'User' or pretend to be 'User'. You only respond once as 'Assistant'."
+    # Create a prompt for LLM: Include user inputs, and job description in the prompt
+    prompt = f"The job description is: {prompt_input}\n"
+    prompt += f"The candidate's name to include on the cover letter: {user_name}\n"
+    prompt += f"The job title/role: {role}\n"
+    prompt += f"The hiring manager is: {manager}\n"
+    prompt += f"How I heard about the opportunity: {referral}\n."
+    prompt += "Generate a cover letter"
+    # Generate LLM response
+    with st.spinner("Generating response"):
         
-        st.subheader("Generated Cover Letter:")
-        st.write(generated_cover_letter)
-        # Offer a download link for the generated cover letter
-        st.subheader("Download Generated Cover Letter:")
-        st.download_button("Download Cover Letter as TXT", generated_cover_letter, key="cover_letter")
+        response = replicate.run(
+            'meta/llama-2-13b-chat',  # Llama 2 model
+            input={
+                "prompt": f"{pre_prompt} {prompt} Assistant:",
+                "temperature": temp,
+            }
+        )
+        # Extract and display the LLM-generated cover letter
+        generated_cover_letter = " ".join([item for item in response])
+    
+    st.subheader("Generated Cover Letter:")
+    st.write(generated_cover_letter)
+    # Offer a download link for the generated cover letter
+    st.subheader("Download Generated Cover Letter:")
+    st.download_button("Download Cover Letter as TXT", generated_cover_letter, key="cover_letter")
