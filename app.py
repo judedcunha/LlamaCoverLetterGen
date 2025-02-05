@@ -1,7 +1,8 @@
 import replicate
 import os
-os.environ["REPLICATE_API_TOKEN"] = st.secrets["REPLICATE_API_TOKEN"] #"No stealing my API key!"  # put your api_token
 import streamlit as st
+os.environ["REPLICATE_API_TOKEN"] = st.secrets["REPLICATE_API_TOKEN"] #"No stealing my API key!"  # put your api_token
+
 
 # Define the Streamlit app layout
 st.title("Cover Letter Generator with Llama 2")
