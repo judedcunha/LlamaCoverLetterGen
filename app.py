@@ -1,6 +1,6 @@
 import replicate
 import os
-os.environ["REPLICATE_API_TOKEN"] = "No stealing my API key!"  # put your api_token
+os.environ["REPLICATE_API_TOKEN"] = st.secrets["REPLICATE_API_TOKEN"] #"No stealing my API key!"  # put your api_token
 import streamlit as st
 
 # Define the Streamlit app layout
