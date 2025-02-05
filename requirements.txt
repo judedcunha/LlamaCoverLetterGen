@@ -1,3 +1,2 @@
 replicate
 streamlit
-os
