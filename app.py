@@ -31,8 +31,9 @@ with st.form('form to generate cover letter'):
         prompt += "Generate a cover letter"
         # Generate LLM response
         with st.spinner("Generating response"):
+            
             response = replicate.run(
-                'a16z-infra/llama13b-v2-chat:df7690f1994d94e96ad9d568eac121aecf50684a0b0963b25a41cc40061269e5',  # Llama 2 model
+                'meta/llama-2-13b-chat',  # Llama 2 model
                 input={
                     "prompt": f"{pre_prompt} {prompt} Assistant:",
                     "temperature": temp,
