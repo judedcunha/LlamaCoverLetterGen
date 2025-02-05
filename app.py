@@ -34,7 +34,7 @@ with st.form('form to generate cover letter'):
         with st.spinner("Generating response"):
             
             response = replicate.run(
-                'meta/meta-llama-3-70b-instruct',  # Llama 3 model
+                'meta/llama-2-13b-chat',  # Llama 2 model
                 input={
                     "prompt": f"{pre_prompt} {prompt} Assistant:",
                     "temperature": temp,
