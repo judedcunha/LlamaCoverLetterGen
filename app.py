@@ -5,7 +5,7 @@ os.environ["REPLICATE_API_TOKEN"] = st.secrets["REPLICATE_API_TOKEN"] #"No steal
 
 
 # Define the Streamlit app layout
-st.title("Cover Letter Generator with Llama 2")
+st.title("Cover Letter Generator with Llama 2/3")
 
 with st.form('Form to generate cover letter'):
     # User input to generate the cover letter 
@@ -17,7 +17,7 @@ with st.form('Form to generate cover letter'):
     role = st.text_input("Job Title")
     referral = st.text_input("How did you find out about this opportunity? (Optional)")
     prompt_input = st.text_area("Job description")
-    temperature = st.number_input('AI Temperature. Reflects the model creativity on a scale of 0 to 1', value=0.)
+    temperature = st.number_input('AI Temperature. Reflects the model creativity on a scale of 0 to 1', value=0.5)
 
     # Generate LLM response
     generate_cover_letter = st.form_submit_button("Generate!")
